@@ -14,6 +14,7 @@ describe('item router', () => {
       const match = router.stack.find(
         s => s.route.path === route.path && s.route.methods[route.method]
       )
+
       expect(match).toBeTruthy()
     })
   })

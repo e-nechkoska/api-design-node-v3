@@ -5,6 +5,8 @@ import { Item } from './src/resources/item/item.model'
 import { List } from './src/resources/list/list.model'
 import { User } from './src/resources/user/user.model'
 
+jest.setTimeout(10000)
+
 const models = { User, List, Item }
 
 const url =
