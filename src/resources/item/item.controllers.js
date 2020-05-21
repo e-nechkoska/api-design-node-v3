@@ -1,8 +1,6 @@
-import { crudControllers } from '../../utils/crud'
 import { Item } from './item.model'
 import mongoose from 'mongoose'
 import { connect } from '../../utils/db'
-import { format } from 'morgan'
 
 const run = async () => {
     await connect('mongodb://localhost:27017/api-test');
@@ -13,12 +11,19 @@ const run = async () => {
         list: mongoose.Types.ObjectId()
     })
     
-    
-    item.then(() => {
-        mongoose.disconnect();
-        console.log(item);
-    });
+    // update document
+    const updated = await Item.findOneAndUpdate(
+        item._id, 
+        { name: 'eat' },
+        { new: true }
+    ).exec();
+
+    console.log(updated);
+
+    // item.then(() => {
+    //     mongoose.disconnect();
+    //     console.log(item);
+    // });
 }
 
 run();
-// export default crudControllers(Item)
